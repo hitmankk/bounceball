@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+
+    <script>
+        var canva = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        var bs = 15;
+        var bx = canva.width / 2;
+        var by = canva.height / 2;
+        var fps = 30;
+        var vx, vy;
+        setInterval(update, 1000 / fps);
+        vx = Math.floor(Math.random() * 75 + 25) / fps;
+        vy = Math.floor(Math.random() * 75 + 25) / fps;
+        if (Math.floor(Math.random() * 2 == 0)) vx = -vx;
+        if (Math.floor(Math.random() * 2 == 0)) vy = -vy;
+        function update() {
+            bx += vx;
+            by += vy;
+            context.fillStyle = "black";
+            context.fillRect(0, 0, canva.width, canva.height);
+            context.fillStyle = "yellow";
+            context.fillRect(bx - bs / 2, by - bs / 2, bs, bs);
+            if (bx - bs / 2 < 0 && vx < 0) vx = -vx;
+            if (bx + bs / 2 > canva.width && vx > 0) vx = -vx;
+            if (by - bs / 2 < 0 && vy < 0) vy = -vy;
+            if (by + bs / 2 > canva.height && vx > 0) vy = -vy;
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
